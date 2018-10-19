@@ -42,11 +42,18 @@ func (t TextNow) getUserInfo() (map[string]interface{}, error) {
 	sign := t.genSignature("GET", node, query)
 	return t.sendReq("GET", node, query, sign, nil)
 }
+func (t TextNow) logout() error {
+	node := "sessions"
+	query := "?client_type=TN_ANDROID&client_id=" + t.loginid
+	sign := t.genSignature("DELETE", node, query)
+	_, err := t.sendReq("DELETE", node, query, sign, nil)
+	return err
+}
 
 // Trigger an graceful shutdown
 func (t *TextNow) Shutdown() error {
 	t.done <- true
-	return nil
+	return t.logout()
 }
 
 // Setup TextNow and wait for incoming messages
@@ -62,17 +69,22 @@ func (t *TextNow) Setup() error {
 	if t.Handler == nil {
 		return nil
 	}
+	t.done = make(chan bool, 1)
+	ticker := time.NewTicker(t.Delay)
 	for {
 		select {
 		case <-t.done:
 			return nil
-		default:
+		case <-ticker.C:
 			node := "users/" + t.username + "/messages"
 			query := "?client_type=TN_ANDROID&client_id=" + t.loginid + "&get_all=1&page_size=30&start_message_id=1"
 			sign := t.genSignature("GET", node, query)
 			req, err := t.sendReq("GET", node, query, sign, nil)
 			if err != nil {
 				return err
+			}
+			if req["messages"] == nil {
+				return fmt.Errorf("Account Logged Out")
 			}
 			for _, msg := range req["messages"].([]interface{}) {
 				m := msg.(map[string]interface{})
@@ -86,7 +98,6 @@ func (t *TextNow) Setup() error {
 				}
 				t.Handler(tnm)
 			}
-			time.Sleep(t.Delay)
 		}
 	}
 }
@@ -252,7 +263,7 @@ func (t TextNow) sendReq(method, node, query, sign string, data io.Reader) (map[
 	m := map[string]interface{}{}
 	if method != "PATCH" && method != "DELETE" {
 		dec := json.NewDecoder(resp.Body)
-		if err := dec.Decode(&m); err != nil {
+		if err := dec.Decode(&m); err != nil && err.Error() != "EOF" {
 			return nil, err
 		}
 	}
