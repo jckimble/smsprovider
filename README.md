@@ -18,8 +18,8 @@ go get -u gitlab.com/jckimble/smsprovider
 ```
 
 ## Providers
-TextNow
-Signal
+ - TextNow
+ - Signal
 
 ## Examples
 Look under the examples directory right now we have two examples. A bot and gateway
