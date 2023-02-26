@@ -5,7 +5,7 @@ import (
 	"crypto/md5"
 	"encoding/json"
 	"fmt"
-	"gitlab.com/jckimble/smsprovider"
+	"github.com/jckimble/smsprovider"
 	"io"
 	"net/http"
 	"strconv"

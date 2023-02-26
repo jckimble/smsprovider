@@ -1,7 +1,7 @@
 package textnow
 
 import (
-	"gitlab.com/jckimble/smsprovider"
+	"github.com/jckimble/smsprovider"
 	"time"
 )
 

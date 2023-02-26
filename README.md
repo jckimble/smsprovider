@@ -1,7 +1,7 @@
 # smsprovider
-[![GoDoc](https://godoc.org/gitlab.com/jckimble/smsprovider?status.svg)](https://godoc.org/gitlab.com/jckimble/smsprovider)
-[![pipeline status](https://gitlab.com/jckimble/smsprovider/badges/master/pipeline.svg)](https://gitlab.com/jckimble/smsprovider/commits/master)
-[![coverage report](https://gitlab.com/jckimble/smsprovider/badges/master/coverage.svg)](https://gitlab.com/jckimble/smsprovider/commits/master)
+[![GoDoc](https://godoc.org/github.com/jckimble/smsprovider?status.svg)](https://godoc.org/github.com/jckimble/smsprovider)
+![build status](https://github.com/jckimble/smsprovider/actions/workflows/build.yml/badge.svg?branch=master)
+[![coverage report](https://github.com/jckimble/smsprovider/badges/master/coverage.svg)](https://github.com/jckimble/smsprovider/commits/master)
 
 Package `jckimble/smsprovider` implements providers for sms services. Made to make sms bots/gateways easier. Pull Requests welcome for new providers that you like.
 
@@ -14,7 +14,7 @@ Package `jckimble/smsprovider` implements providers for sms services. Made to ma
 
 ## Install
 ```sh
-go get -u gitlab.com/jckimble/smsprovider
+go get -u github.com/jckimble/smsprovider
 ```
 
 ## Providers

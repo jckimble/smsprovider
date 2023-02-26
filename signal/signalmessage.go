@@ -2,7 +2,7 @@ package signal
 
 import (
 	"github.com/aebruno/textsecure"
-	"gitlab.com/jckimble/smsprovider"
+	"github.com/jckimble/smsprovider"
 	"io"
 	"io/ioutil"
 	"time"

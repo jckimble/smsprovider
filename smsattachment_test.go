@@ -1,7 +1,7 @@
 package smsprovider_test
 
 import (
-	"gitlab.com/jckimble/smsprovider"
+	"github.com/jckimble/smsprovider"
 	"net/http"
 	"net/http/httptest"
 	"testing"

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"gitlab.com/jckimble/smsprovider"
-	"gitlab.com/jckimble/smsprovider/signal"
-	"gitlab.com/jckimble/smsprovider/textnow"
+	"github.com/jckimble/smsprovider"
+	"github.com/jckimble/smsprovider/signal"
+	"github.com/jckimble/smsprovider/textnow"
 	"log"
 	"os"
 	ossignal "os/signal"

@@ -4,9 +4,9 @@ import (
 	"context"
 	"encoding/json"
 	"github.com/gorilla/mux"
-	"gitlab.com/jckimble/smsprovider"
-	"gitlab.com/jckimble/smsprovider/signal"
-	"gitlab.com/jckimble/smsprovider/textnow"
+	"github.com/jckimble/smsprovider"
+	"github.com/jckimble/smsprovider/signal"
+	"github.com/jckimble/smsprovider/textnow"
 	"log"
 	"net/http"
 	"os"
@@ -16,9 +16,10 @@ import (
 	"time"
 )
 
-//Note: This is an example, generally you would want to add
-//		a middleware to authenticate request where the api
-//		couldn't be abused!
+// Note: This is an example, generally you would want to add
+//
+//	a middleware to authenticate request where the api
+//	couldn't be abused!
 func main() {
 	textnow := &textnow.TextNow{
 		Username: "username",
